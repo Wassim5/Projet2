@@ -83,7 +83,7 @@ def print_rules():
     time.sleep(0.5)
     print("\nBienvenue dans le Jeu de NIM\n")
     time.sleep(0.5)
-    print("L'objectif est de ne pas enlever la derniére pierre de la table\n")
+    print("L'objectif est de forcer l adversaire a enlever la derniére pierre de la table\n")
     time.sleep(0.5)
     print("Chacun son tour, Vous pouvez enlevez le nombre que vous voulez d'un seul tas\n")
     time.sleep(0.5)
@@ -167,7 +167,7 @@ def tour_joueur(table,quit):
         col = raw_input("\nChoisissez un tas ")
         if not col.isdigit():
             if r_quit(str(col)):
-                quit, loss = True, r_quit_routine()
+                quit, win = True, r_quit_routine()
                 break
             else:
                 print '\nSVP Choisissez un tas existant'
@@ -179,7 +179,7 @@ def tour_joueur(table,quit):
         count = raw_input("\nCombien de pierres voulez_vous enlevé de ce tas? ")
         if not count.isdigit():
             if r_quit(str(count)):
-                quit, loss = True, r_quit_routine()
+                quit, win = True, r_quit_routine()
                 break
             else:
                 print '\nSVP Choisir un nombre'
@@ -187,7 +187,7 @@ def tour_joueur(table,quit):
     return col, count, quit
 
 def jouer_nim(C_V_C,numero_joueur):
-    quit, loss = False, False
+    quit, win = False, False
     cols = random.randint(3,7)
     table = []
     for x in range(0,cols):
@@ -214,7 +214,7 @@ def jouer_nim(C_V_C,numero_joueur):
                 print "\nOrdinateur a enlevé",rm_count,"depuis le tas",rm_column
                 print_table(table,calc_table_xor(table))
                 if sum(table) == 0:
-                    loss = True
+                    win = True
                     break
 
         bit_xor = calc_table_xor(table)
@@ -224,7 +224,7 @@ def jouer_nim(C_V_C,numero_joueur):
             print_table(table,calc_table_xor(table))
             time.sleep(1)
             if sum(table) == 0:
-                loss = True
+                win = True
                 break
         else:
             if numero_joueur == 2:
@@ -239,19 +239,19 @@ def jouer_nim(C_V_C,numero_joueur):
                 print "\nOrdinateur a enlevé",rm_count,"depuis le tas",rm_column
                 print_table(table,calc_table_xor(table))
                 if sum(table) == 0:
-                    loss = True
+                    win = True
                     break
 
-    if (loss or quit) and not C_V_C:
+    if (win or quit) and not C_V_C:
+        print "\nCool, vous avez gagné!"
+    elif not C_V_C:
         print '\nOh non! Vous avez perdu. Bonne chance pour la prochaine fois.'
         time.sleep(0.1)
         print '(Vous jouerez mieux)'
-    elif not C_V_C:
-        print "\nCool, vous avez gagné!"
-    elif loss:
-        print "\nOrdinateur 2 a gagné."
-    else:
+    elif win:
         print "\nOrdinateur 1 a gagné."
+    else:
+        print "\nOrdinateur 2 a gagné."
 
 print_rules()
 envie_de_jouer = o_n_reponse(raw_input("\nVoulez-vous jouer? (o = oui) "))
@@ -263,5 +263,3 @@ while envie_de_jouer:
         id =  0
         while id != 1 and id != 2:
             id = int(raw_input("\nJoueur(1) ou Joueur(2)? "))
-        jouer_nim(c_v_c,id)
-enviee_de_jouer = o_n_reponse(raw_input("\nVoulez-vous jouer encore une fois? "))
