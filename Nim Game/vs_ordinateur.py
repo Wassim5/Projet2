@@ -263,3 +263,5 @@ while envie_de_jouer:
         id =  0
         while id != 1 and id != 2:
             id = int(raw_input("\nJoueur(1) ou Joueur(2)? "))
+        jouer_nim(c_v_c,id)
+envie_de_jouer = o_n_answer(raw_input("\nVoulez-vous jouer encore une fois? "))
