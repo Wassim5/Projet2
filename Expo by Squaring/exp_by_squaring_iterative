@@ -1,0 +1,28 @@
+#  fonction qui vérifie d'abord la parité de n, puis calcule x^n 
+
+def power(x, power):
+   
+    # on cherche à calculer la valeur de a^b i.e. a**b
+    #On suppose que a >= 1 and b >= 0
+   
+
+    r = 1
+    while power > 0:
+        # si power est pair
+        if power % 2 == 0:
+            # diviser power par 2
+            power = power / 2
+            # Multiplier x par soit meme
+            x = x * x
+        else:
+            # on décroit power par 1 
+            power = power - 1
+            # utiliser le 1 qu'on vient d'enlever
+            # on l'enregistre directement dans r
+            r = r * x
+
+            # maintenant power est pair, on fait comme la procedure précedante
+            power = power / 2
+            x = x * x
+
+    return r
