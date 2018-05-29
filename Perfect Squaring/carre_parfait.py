@@ -1,5 +1,4 @@
-# An Efficient Method to count squares between a
-# and b
+# Méthode efficace pour calculer les carrées entre a et b
 #import numpy as geek
 #import numpy as np
 import math
