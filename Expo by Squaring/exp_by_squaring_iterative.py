@@ -13,6 +13,7 @@ def expo(x, n):
         if n % 2 == 0:
             # diviser n par 2
             n = n / 2
+            r *= x
             # Multiplier x par soit meme
             x = x * x
         else:
@@ -29,5 +30,5 @@ def expo(x, n):
 
 return r,s
 
-def minProf(k)
+def minProd(k)
     
