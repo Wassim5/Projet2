@@ -11,21 +11,9 @@ def prim(x):
 				break
 
 	return prim
-
-#F2
-# fonction qui recherche les nombre premier, entre deux entier ( départ , arrivée) et les enregistre dans une liste 
-
-def trouv_prims(a, b):
-	s = set()
-	
-	for i in range(a, b+1):
-		if trouv_prim(i):
-			s.add(i)
-	
-	return s
   
   
-  #F3
+  #F2
 from itertools import chain, combinations, product, permutations
 import functools
 import operator
@@ -33,7 +21,7 @@ import operator
 def CountSquares(a, b):
     return (math.floor(math.sqrt(b)) - math.ceil(math.sqrt(a)) + 1)
 
-  #F4
+  #F3
 #Powerset forme les sous-ensembles (combinaisons) à partir des elements d'un ensemble donné
 def powerset(iterable):
     """
